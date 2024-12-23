@@ -13,6 +13,13 @@ export class LoginComponent {
 
   constructor(public authService: AuthService) {}
 
+  //Itt megpróbáltam megoldani az a problémát hogy hibát dob az Inicialikzalas sorrendje miatt
+  /*   ngAfterViewInit(): void {
+      let loginIsFailed: boolean;
+      loginIsFailed = false;
+      this.buttonDisabled();
+  } */
+
   buttonDisabled() {
     if (this.authService.missedLogins >= 5) {
       this.loginIsFailed = false;

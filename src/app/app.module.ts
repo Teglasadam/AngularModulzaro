@@ -7,7 +7,6 @@ import { NavigationComponent } from './navigation/navigation.component';
 import { ListComponent } from './list/list.component';
 import { StatisticsComponent } from './statistics/statistics.component';
 import { LoginComponent } from './login/login.component';
-import { FooterComponent } from './footer/footer.component';
 import { HttpClientModule } from '@angular/common/http';
 import { registerLocaleData } from '@angular/common';
 import localeHu from '@angular/common/locales/hu';
@@ -21,7 +20,6 @@ registerLocaleData(localeHu);
     ListComponent,
     StatisticsComponent,
     LoginComponent,
-    FooterComponent,
   ],
   imports: [BrowserModule, AppRoutingModule, FormsModule, HttpClientModule],
   providers: [],

@@ -1,4 +1,4 @@
-import { Injectable, Output } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { Developer } from './developer';
 import { HttpClient } from '@angular/common/http';
 
@@ -6,8 +6,7 @@ import { HttpClient } from '@angular/common/http';
   providedIn: 'root',
 })
 export class DeveloperService {
-
-  ApiURL: string = 'https://siposm.hu/developerAPI/'
+  ApiURL: string = 'https://siposm.hu/developerAPI/';
   developers: Developer[] = [];
 
   constructor(private http: HttpClient) {
@@ -18,13 +17,13 @@ export class DeveloperService {
     this.http
       .get<Developer[]>(this.ApiURL + 'getDevelopers')
       .subscribe((devData) => {
-        this.developers = devData.map(
-          (dev) => Object.assign(new Developer(), dev)
+        this.developers = devData.map((dev) =>
+          Object.assign(new Developer(), dev)
         );
       });
   }
 
   loaded(): boolean {
-    return this.developers.length > 0
+    return this.developers.length > 0;
   }
 }
