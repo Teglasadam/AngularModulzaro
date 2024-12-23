@@ -12,6 +12,11 @@ export class AuthService {
 
   constructor(private router: Router, private http: HttpClient) {}
 
+  isLoggedIn(): boolean {
+    let token = localStorage.getItem('auth-token');
+    return token !== null;
+  }
+
   login(username: string, password: string) {
     let loginData: LoginModel = new LoginModel();
     loginData.username = username;
@@ -23,6 +28,7 @@ export class AuthService {
           console.log('::SUCCESS::');
           console.log('LOGIN REQUEST RESULT: ', response);
           this.missedLogins = 0;
+          
           localStorage.setItem('auth-token', response.token);
           this.router.navigate(['list']);
         },
@@ -33,5 +39,16 @@ export class AuthService {
           console.log('Missed LogIns: ' + this.missedLogins);
         },
       });
+  }
+
+  logout() {
+    localStorage.removeItem('auth-token');
+  }
+
+  resetMissedLogins() {
+    setTimeout(() => {
+      this.missedLogins = 0;
+      console.log('Missed logins reset to 0');
+    }, 300000);
   }
 }

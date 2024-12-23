@@ -38,10 +38,19 @@
         </li>
       </ul>
     </div>
-    <div class="card-footer text-body-secondary">
+    <div
+      class="card-footer text-body-secondary"
+      *ngIf="authService.isLoggedIn()"
+    >
       <button class="me-2 btn btn-primary">Select</button>
       <button class="me-2 btn btn-primary">Edit</button>
       <button class="btn btn-primary">Delete</button>
+    </div>
+    <div
+      class="card-footer text-body-secondary"
+      *ngIf="!authService.isLoggedIn()"
+    >
+      <h4>A funkciók eléréséhez kérjük jelentkezzen be.</h4>
     </div>
   </div>
 </div>

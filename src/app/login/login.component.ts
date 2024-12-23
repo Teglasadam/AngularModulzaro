@@ -13,6 +13,10 @@ export class LoginComponent {
   constructor(public authService: AuthService) {}
 
   buttonDisabled() {
-    return this.authService.missedLogins > 5;
+    if (this.authService.missedLogins >= 5) {
+      return this.authService.resetMissedLogins();
+    } else {
+      return this.authService.missedLogins < 5;
+    }
   }
 }
