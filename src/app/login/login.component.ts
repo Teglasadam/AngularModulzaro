@@ -7,6 +7,7 @@ import { AuthService } from '../auth.service';
   styleUrl: './login.component.sass',
 })
 export class LoginComponent {
+  loginIsFailed: boolean = false;
   username: string = '';
   password: string = '';
 
@@ -14,8 +15,10 @@ export class LoginComponent {
 
   buttonDisabled() {
     if (this.authService.missedLogins >= 5) {
+      this.loginIsFailed = false;
       return this.authService.resetMissedLogins();
     } else {
+      this.loginIsFailed = true;
       return this.authService.missedLogins < 5;
     }
   }

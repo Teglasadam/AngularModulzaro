@@ -28,7 +28,7 @@ export class AuthService {
           console.log('::SUCCESS::');
           console.log('LOGIN REQUEST RESULT: ', response);
           this.missedLogins = 0;
-          
+
           localStorage.setItem('auth-token', response.token);
           this.router.navigate(['list']);
         },
