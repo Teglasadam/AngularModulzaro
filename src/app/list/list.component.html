@@ -1,0 +1,47 @@
+<div
+  class="container d-flex flex-column justify-content-center align-items-center"
+>
+  <div
+    class="card text-center my-5 w-50 bg-success"
+    *ngFor="let dev of devService.developers"
+    [ngClass]="{
+      'bg-danger': dev.skills.length > 5,
+      'bg-warning': dev.skills.length < 3
+    }"
+  >
+    <!-- ugy kene megprobalni hogy ha kisebb mint harom akkor az ng classt allitsa be ugy else amugy templattel -->
+    <!-- vagy irni egy fuggvenyt ami azt csinalja hogy bizonyos esetekben a megfelelo szöveget returnuli vissza es azt beleirni a classok koze -->
+    <div class="card-header">
+      <div class="id-style">{{ dev.id }}</div>
+    </div>
+    <ng-container *ngIf="dev.image !== ''; else elseTemplate">
+      <img src="{{ dev.image }}" alt="..." class="card-img-top" />
+    </ng-container>
+    <ng-template #elseTemplate>
+      <img
+        src="https://upload.wikimedia.org/wikipedia/commons/thumb/4/4f/ISO_7010_P001.svg/1280px-ISO_7010_P001.svg.png"
+        alt="Image URL is Missing"
+        class="card-img-top"
+      />
+    </ng-template>
+    <h3 class="card-title">{{ dev.name }}</h3>
+    <div class="card-body">
+      <h4>{{ dev.job }}</h4>
+      <h3>{{ dev.getFormattedSalary() }}</h3>
+      <h4 class="my-3">Skills:</h4>
+      <ul class="list-group list-group-flush">
+        <li
+          class="list-group-item skill-style"
+          *ngFor="let skill of dev.skills"
+        >
+          {{ skill }}
+        </li>
+      </ul>
+    </div>
+    <div class="card-footer text-body-secondary">
+      <button class="me-2 btn btn-primary">Select</button>
+      <button class="me-2 btn btn-primary">Edit</button>
+      <button class="btn btn-primary">Delete</button>
+    </div>
+  </div>
+</div>

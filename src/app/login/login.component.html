@@ -1,0 +1,33 @@
+<div class="container content w-25">
+  <div class="mb-3">
+    <label for="formGroupExampleInput" class="form-label" [(ngModel)]="username"
+      >Username</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput"
+      placeholder="username..."
+    />
+  </div>
+  <div class="mb-3">
+    <label
+      for="formGroupExampleInput2"
+      class="form-label"
+      [(ngModel)]="password"
+      >Password</label
+    >
+    <input
+      type="text"
+      class="form-control"
+      id="formGroupExampleInput2"
+      placeholder="password..."
+    />
+  </div>
+  <button
+    class="btn btn-primary w-25 mx-auto"
+    (click)="authService.login(username, password)"
+  >
+    Login
+  </button>
+</div>

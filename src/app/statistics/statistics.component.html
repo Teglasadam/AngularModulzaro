@@ -1,0 +1,8 @@
+<div class="container">
+  <h1>Statistics:</h1>
+  <div>
+    <p>AVG: {{ avgSalary() | currency:'HUF': 'symbol':'1.0-0':'hu-HU' }}</p>
+    <p>Lowest: {{ lowSalary() | currency:'HUF': 'symbol':'1.0-0':'hu-HU' }}</p>
+    <p>Highest: {{ hiSalary() | currency:'HUF': 'symbol':'1.0-0':'hu-HU' }}</p>
+  </div>
+</div>

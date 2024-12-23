@@ -1,0 +1,2 @@
+statisztika legordulo menuben
+ez kulon modal ablakokat nyisson meg
